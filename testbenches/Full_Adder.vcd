@@ -1,0 +1,70 @@
+$date
+	Sun Dec 31 23:20:53 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module Full_Adder_tb $end
+$var wire 1 ! Sum $end
+$var wire 1 " Cout $end
+$var reg 1 # A $end
+$var reg 1 $ B $end
+$var reg 1 % Cin $end
+$scope module uut $end
+$var wire 1 # A $end
+$var wire 1 $ B $end
+$var wire 1 % Cin $end
+$var wire 1 " Cout $end
+$var wire 1 ! Sum $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0%
+0$
+0#
+0"
+0!
+$end
+#1000
+1!
+1#
+#2000
+0#
+1$
+#3000
+1"
+0!
+1#
+#4000
+0"
+1!
+0#
+0$
+1%
+#5000
+1"
+0!
+1#
+#6000
+0#
+1$
+#7000
+1!
+1#
+#8000
+0"
+0!
+0#
+0$
+0%
+#9000
+1!
+1#
+#10000
+0#
+1$

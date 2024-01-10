@@ -1,0 +1,50 @@
+$date
+	Mon Jan  1 16:09:07 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module Barrett_Reduction_tb $end
+$var wire 32 ! result [31:0] $end
+$var reg 32 " a [31:0] $end
+$var reg 32 # b [31:0] $end
+$var reg 32 $ q [31:0] $end
+$scope module uut $end
+$var wire 32 % a [31:0] $end
+$var wire 32 & b [31:0] $end
+$var wire 32 ' q [31:0] $end
+$var reg 32 ( k [31:0] $end
+$var reg 64 ) m1 [63:0] $end
+$var reg 64 * m2 [63:0] $end
+$var reg 32 + m3 [31:0] $end
+$var reg 32 , mu [31:0] $end
+$var reg 32 - r [31:0] $end
+$var reg 32 . result [31:0] $end
+$var reg 64 / t [63:0] $end
+$var reg 64 0 z [63:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b1010010001010011011111000 0
+b10001000000101 /
+b10000000100 .
+b10000000000000 -
+b10001000100000 ,
+b101011110011 +
+b1010111100111001010100000 *
+b101001000101 )
+b1101 (
+b1111000000001 '
+b1001001101000 &
+b1000111011011 %
+b1111000000001 $
+b1001001101000 #
+b1000111011011 "
+b10000000100 !
+$end
+#10000

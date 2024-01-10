@@ -1,0 +1,108 @@
+####################################################### Data 1
+Result: 2888
+Computation Time: 18.358230590820312 microsecond
+Result: 9142
+Computation Time: 4.0531158447265625 microsecond
+Result: 9077
+Computation Time: 2.6226043701171875 microsecond
+Result: 15459
+Computation Time: 1.9073486328125 microsecond
+
+
+####################################################### Data 2
+Result: 2888
+Computation Time: 16.927719116210938 microsecond
+Result: 9142
+Computation Time: 4.0531158447265625 microsecond
+Result: 9077
+Computation Time: 3.814697265625 microsecond
+Result: 15459
+Computation Time: 1.9073486328125 microsecond
+
+
+####################################################### Data 3
+Result: 2888
+Computation Time: 20.742416381835938 microsecond
+Result: 9142
+Computation Time: 6.198883056640625 microsecond
+Result: 9077
+Computation Time: 4.0531158447265625 microsecond
+Result: 15459
+Computation Time: 4.76837158203125 microsecond
+
+
+####################################################### Data 4
+Result: 2888
+Computation Time: 19.550323486328125 microsecond
+Result: 9142
+Computation Time: 4.0531158447265625 microsecond
+Result: 9077
+Computation Time: 2.86102294921875 microsecond
+Result: 15459
+Computation Time: 2.384185791015625 microsecond
+
+
+####################################################### Data 5
+Result: 2888
+Computation Time: 13.113021850585938 microsecond
+Result: 9142
+Computation Time: 3.814697265625 microsecond
+Result: 9077
+Computation Time: 3.0994415283203125 microsecond
+Result: 15459
+Computation Time: 1.6689300537109375 microsecond
+
+
+####################################################### Data 6
+Result: 2888
+Computation Time: 13.828277587890625 microsecond
+Result: 9142
+Computation Time: 3.814697265625 microsecond
+Result: 9077
+Computation Time: 2.1457672119140625 microsecond
+Result: 15459
+Computation Time: 1.6689300537109375 microsecond
+
+
+####################################################### Data 7
+Result: 2888
+Computation Time: 21.219253540039062 microsecond
+Result: 9142
+Computation Time: 6.9141387939453125 microsecond
+Result: 9077
+Computation Time: 3.814697265625 microsecond
+Result: 15459
+Computation Time: 5.245208740234375 microsecond
+
+
+####################################################### Data 8
+Result: 2888
+Computation Time: 12.636184692382812 microsecond
+Result: 9142
+Computation Time: 3.5762786865234375 microsecond
+Result: 9077
+Computation Time: 3.0994415283203125 microsecond
+Result: 15459
+Computation Time: 1.6689300537109375 microsecond
+
+
+####################################################### Data 9
+Result: 2888
+Computation Time: 19.550323486328125 microsecond
+Result: 9142
+Computation Time: 6.4373016357421875 microsecond
+Result: 9077
+Computation Time: 4.291534423828125 microsecond
+Result: 15459
+Computation Time: 2.6226043701171875 microsecond
+
+
+####################################################### Data 10
+Result: 2888
+Computation Time: 16.450881958007812 microsecond
+Result: 9142
+Computation Time: 4.0531158447265625 microsecond
+Result: 9077
+Computation Time: 2.6226043701171875 microsecond
+Result: 15459
+Computation Time: 1.9073486328125 microsecond

@@ -1,0 +1,9 @@
+# Ignore everything in this directory
+*~
+*.o
+*.o.d
+*.gcov
+sim/build*/
+
+# Visual Studio Code
+.vscode
