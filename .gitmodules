@@ -1,0 +1,3 @@
+[submodule "sim/third-party/cereal"]
+	path = sim/third-party/cereal
+	url = https://github.com/openfheorg/cereal.git

@@ -22,20 +22,22 @@ def indexReverse(B, v):
 # print(reversed_B)
 
 def generate_Y_table(n, q):
+    Y_table = [1]  # Start with the first element, which is 1 (2^0 mod q)
 
-    # Calculate the powers of the primitive root
-    Y_table = [1] * n
-    current_power = 1
+    primitive_root = 2  # A common choice for a primitive root
 
-    # Find a primitive 2nth root of unity modulo q
-    for i in range(2, q):
-        if (pow(i, 2, q) == find_primitive_root(n, q)) and (pow(i, n, q) == -1):
-           primitive_root = i
-           for i in range(1, n):
-                current_power = (current_power * primitive_root) % q
-                Y_table[i] = current_power
+    for i in range(1, n):
+        next_element = pow(primitive_root, (q - 1) // (2**i), q)
+        Y_table.append(next_element)
 
-    return Y_table
+    return Y_table[::-1]  # Return the list in bit-reversed order
+
+# Example usage
+n = 4  # Adjust as needed
+q = 7681  # Adjust as needed
+Y_table = generate_Y_table(n, q)
+print(Y_table)
+
 
 def find_primitive_root(n, q):
     # Find a primitive root by brute force
@@ -43,9 +45,10 @@ def find_primitive_root(n, q):
         if pow(i, n, q) == 1:
             return i
 
-# Example usage
-n = 4  # Size of the input array
-q = 7681  # Chosen prime modulus
+# # Example usage
+# n = 4  # Size of the input array
+# q = 7681  # Chosen prime modulus
 
-Y_table = generate_Y_table(n, q)
-print(Y_table)
+# Y_table = generate_Y_table(n, q)
+# print(Y_table)
+        
