@@ -1,7 +1,6 @@
 #include <iostream>
 
 int main() {
-
     int N = 4;
     std::cout << "mulai" << std::endl;
 
@@ -10,12 +9,10 @@ int main() {
         for (int j = 0; j < i; j++) {
             // std::cout << j << std::endl;
             for (int k = j*N/i; k < (2*j+1)*N/(2*i); k++) {
-                // std::cout << k << std::endl;
-                std::cout << i+j << std::endl;
+                std::cout << k << std::endl;
+                std::cout << k + N/(2*i) << std::endl;
             }
-            
         }
-        
     }
     
     return 0;
