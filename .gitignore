@@ -4,6 +4,7 @@
 *.o.d
 *.gcov
 sim/build*/
+simulation_data
 
 # Visual Studio Code
 .vscode

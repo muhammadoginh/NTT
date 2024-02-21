@@ -5,6 +5,52 @@
 import math
 from helper import *
 
+# Cooley-Tukey Butterfly Structure
+# A0,A1: input coefficients
+# W: twiddle factor
+# q: modulus
+# B0,B1: output coefficients
+def CT_Butterfly(A0,A1,W,q):
+    """
+    A0 -------\--|+|-- B0
+               \/
+               /\
+    A1 --|x|--/--|-|-- B1
+    """
+    M = (A1 * W) % q
+
+    B0 = (A0 + M) % q
+    B1 = (A0 - M) % q
+
+    return B0,B1
+
+# Gentleman-Sandle Butterfly Structure
+# A0,A1: input coefficients
+# W: twiddle factor
+# q: modulus
+# B0,B1: output coefficients
+def GS_Butterfly(A0,A1,W,q):
+    """
+    A0 --\--|+|------- B0
+          \/
+          /\
+    A1 --/--|-|--|x|-- B1
+    """
+    M0 = (A0 + A1) % q
+    M1 = (A0 - A1) % q
+
+    B0 = M0
+    B1 = (M1 * W) % q
+
+    return B0,B1
+
+# --- PSI Table ---
+def psi_table(psi, n, q):
+    psi_table = []
+    for i in range(n):
+        psi_table.append((psi**i) % q)
+    return psi_table
+
 # --- NTT functions ---
 def NTT(A, Y_table, q):
     '''
@@ -30,12 +76,14 @@ def NTT(A, Y_table, q):
                 
                 y = Y_table[i + j + 1]
                 # print(i + j + 1)
-                print(y)
+                # print(y)
 
-                at_temp = (hatA[a_idx + jump] * y) % q      # will use barrett soon and karatsuba
 
-                hatA[a_idx + jump] = (hatA[a_idx] - at_temp) % q
-                hatA[a_idx] = (hatA[a_idx] + at_temp) % q
+                hatA[a_idx], hatA[a_idx + jump] = CT_Butterfly(hatA[a_idx], hatA[a_idx + jump], y, q)
+                # print(hatA[a_idx], hatA[a_idx + jump])
+                # at_temp = (hatA[a_idx + jump] * y) % q      # will use barrett soon and karatsuba
+                # hatA[a_idx + jump] = (hatA[a_idx] - at_temp) % q
+                # hatA[a_idx] = (hatA[a_idx] + at_temp) % q
 
     hatA = indexReverse(hatA, v)
     return hatA
@@ -89,14 +137,12 @@ def iNTT(hatA, Y_table, q):
             j2 = j1 + t - 1
             S = Y_table[h + i]
             for j in range(j1, j2 + 1):
-                # print(j)
-                # print(j + t)
-                # print(h+i)
-                # print(S)
-                U = a[j]
-                V = a[j + t]
-                a[j] = (U + V) % q
-                a[j + t] = ((U - V) * S) % q
+
+                a[j], a[j + t] = GS_Butterfly(a[j], a[j + t], S, q)
+                # U = a[j]
+                # V = a[j + t]
+                # a[j] = (U + V) % q
+                # a[j + t] = ((U - V) * S) % q
             j1 = j1 + 2 * t
         t = 2 * t
         m = m // 2
@@ -123,50 +169,51 @@ def iNTT(hatA, Y_table, q):
     return a
 
 
+################ start uncomment for sanitycheck #################
+# # Example usage NTT
+# a = [1, 2, 3, 4, 5, 6, 7, 8]
+# # a = [1, 2, 3, 4]
+# psi = [1, 1925, 3383, 6468, 7680, 5756, 4298, 1213]  # Replace with your actual psi array
+# # q = 9007199379521537
+# q = 7681
 
-# Example usage NTT
-a = [1, 2, 3, 4, 5, 6, 7, 8]
-# a = [1, 2, 3, 4]
-psi = [1, 1925, 3383, 6468, 7680, 5756, 4298, 1213]  # Replace with your actual psi array
-# q = 9007199379521537
-q = 7681
+# result = NTT(a, indexReverse(psi, int(math.log2(len(psi)))), q)
 
-result = NTT(a, indexReverse(psi, int(math.log2(len(psi)))), q)
+# expected_hatA = [7673, 5349, 976, 1032, 3660, 3813, 3037, 5192]
 
-expected_hatA = [7673, 5349, 976, 1032, 3660, 3813, 3037, 5192]
-
-# Check NTT
-print("")
-print("-------- Sanity check for NTT operations --------")
-if result == expected_hatA:
-    print("Sanity check passed. Result is as expected.")
-else:
-    print("Sanity check failed. Result is not as expected.")
-    print("Expected:", expected_hatA)
-    print("Actual:", result)
+# # Check NTT
+# print("")
+# print("-------- Sanity check for NTT operations --------")
+# if result == expected_hatA:
+#     print("Sanity check passed. Result is as expected.")
+# else:
+#     print("Sanity check failed. Result is not as expected.")
+#     print("Expected:", expected_hatA)
+#     print("Actual:", result)
 
 
-# Example usage iNTT
+# # Example usage iNTT
 # hatA = [1467, 2807, 3471, 7621]
-hatA = [7673, 5349, 976, 1032, 3660, 3813, 3037, 5192]
-inversePsi = [1, 1213, 4298, 5756, 7680, 6468, 3383, 1925]  # Replace with your actual inversePsi array
-# inversePsi = [1, 1213, 4298, 5756]
-reverse_hatA = indexReverse(hatA , int(math.log2(len(hatA))))
-# q = 9007199379521537
-q = 7681
-# print(indexReverse(inversePsi, int(math.log2(len(inversePsi)))))
-# print(reverse_hatA)
-result = iNTT(reverse_hatA, indexReverse(inversePsi, int(math.log2(len(inversePsi)))), q)
+# # hatA = [7673, 5349, 976, 1032]
+# inversePsi = [1, 1213, 4298, 5756]  # Replace with your actual inversePsi array
+# # inversePsi = [1, 1213, 4298, 5756]
+# reverse_hatA = indexReverse(hatA , int(math.log2(len(hatA))))
+# # q = 9007199379521537
+# q = 7681
+# # print(indexReverse(inversePsi, int(math.log2(len(inversePsi)))))
+# # print(reverse_hatA)
+# result = iNTT(reverse_hatA, indexReverse(inversePsi, int(math.log2(len(inversePsi)))), q)
 
+# # a = [1, 2, 3, 4]
 # a = [1, 2, 3, 4]
-a = [1, 2, 3, 4, 5, 6, 7, 8]
 
-# Check iNTT
-print("")
-print("-------- Sanity check for iNTT operations -------")
-if result == a:
-    print("Sanity check passed. Result is as expected.")
-else:
-    print("Sanity check failed. Result is not as expected.")
-    print("Expected:", a)
-    print("Actual:", result)
+# # Check iNTT
+# print("")
+# print("-------- Sanity check for iNTT operations -------")
+# if result == a:
+#     print("Sanity check passed. Result is as expected.")
+# else:
+#     print("Sanity check failed. Result is not as expected.")
+#     print("Expected:", a)
+#     print("Actual:", result)
+################ end uncomment for sanitycheck ###################

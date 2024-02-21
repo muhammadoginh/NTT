@@ -53,11 +53,21 @@ def generate_Y_table(n, q):
 # print(Y_table)
 
 
-# def find_primitive_root(n, q):
-#     # Find a primitive root by brute force
-#     for i in range(2, q):
-#         if pow(i, n, q) == 1:
-#             return i
+# Check if input is m-th (could be n or 2n) primitive root of unity of q
+def isrootofunity(w,m,q):
+    if pow(w,m,q) != 1:
+        return False
+    elif pow(w,m//2,q) != (q-1):
+        return False
+    else:
+        v = w
+        for i in range(1,m):
+            if v == 1:
+                return False
+            else:
+                v = (v*w) % q
+        return True
+
 
 # # Example usage
 # n = 4  # Size of the input array

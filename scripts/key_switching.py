@@ -1,4 +1,5 @@
 import os
+import math
 
 # Get the current working directory
 current_directory = os.getcwd()
@@ -40,6 +41,13 @@ def dyadic(data_in_x, data_in_y, q):
 
     cv = [cv0, cv1, cv2]    # this value will compared to ks_in
 
+    # print([int(math.log2(q[0])) + 1 for x, y in zip(data_in_x[0], data_in_y[0])])
+
+    # mu = [bin(math.floor(2**(2 * int(math.log2(q[0])) + 1 + 3) / q[0])) for x, y in zip(data_in_x[0], data_in_y[0])]
+    # print(mu)
+
+    # print([bin(x * y) for x, y in zip(data_in_x[0], data_in_y[0])])
+
     return cv
 
 def keySwitchCore():
@@ -77,7 +85,7 @@ with open(mult_in_x0, 'r') as f_mult_in_x0, open(mult_in_x1, 'r') as f_mult_in_x
 
         # print(line_in_x0[0], line_in_x1)
         cv = dyadic(parsed_data_in_x, parsed_data_in_y, parsed_data_rns_modulo)
-        print(cv[1])
+        print(cv[0])
 
         # print(parsed_data_rns_modulo[0])
 
