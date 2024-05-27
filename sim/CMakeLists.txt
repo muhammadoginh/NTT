@@ -17,4 +17,4 @@ add_subdirectory(src)
 #--------------------------------------------------------------------
 
 # Include cereal
-add_subdirectory(third-party/cereal)
+# add_subdirectory(third-party/cereal)

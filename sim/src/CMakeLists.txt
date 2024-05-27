@@ -10,7 +10,7 @@ file(GLOB LIB_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/lib/*.cpp")
 
 # Add the necessary header files from the "include" directory
 include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../third-party/cereal/include")
+# include_directories("${CMAKE_CURRENT_SOURCE_DIR}/../third-party/cereal/include")
 
 # Create an executable target for each example file
 foreach(EXAMPLE_SOURCE ${EXAMPLE_SOURCES})

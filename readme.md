@@ -1,6 +1,6 @@
-# Number Theoretic Transform
+# Key Switching
 
-In this project we implement NTT for ModHE
+In this project we implement keyswicthing based on OpenFHE data io
 
 ## Barrett reduction
 

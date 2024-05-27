@@ -22,20 +22,22 @@ def karatsuba(x, y):
     return (z2 << (2 * half)) + ((z1 - z2 - z0) << half) + z0
 
 # Example usage
-x = 2353455453675475686786783456425765467657456548762354325345
-y = 2353455453675475686786787682131534645765435435435153512354
-result = karatsuba(x, y)
+x = 2432654756867985372462134688198654035739486583776581345738651237534898857348566524326547568679853724621346881986540357394865837765813457386512375348988573485665
+y = 2980913123453453749865439885734563495743985637646985740387589364588783704563426224326547568679853724621346881986540357394865837765813457386512375348988573485665
+
 
 start_time = time.time()
-print(x*y)
+x*y
 end_time = time.time()
+# print(z)
 computation_time_seconds = end_time - start_time
 computation_time_milliseconds = computation_time_seconds * 1e6
-print("Computation Time:", computation_time_milliseconds, "microsecond")
+print("* Computation Time:", computation_time_milliseconds, "microsecond")
 
 start_time = time.time()
-print("Result:", result)
+karatsuba(x, y)
 end_time = time.time()
+# print("Result:", result)
 computation_time_seconds = end_time - start_time
 computation_time_milliseconds = computation_time_seconds * 1e6
-print("Computation Time:", computation_time_milliseconds, "microsecond")
+print("Karatsuba Computation Time:", computation_time_milliseconds, "microsecond")

@@ -1,3 +1,7 @@
+# Bit-Reverse integer
+def bit_reverse(a, n):
+    return int(('{:0'+str(n)+'b}').format(a)[::-1],2)
+
 def indexReverse(B, v):
     '''
     B : NTT result in bit-reverse order (BO)
@@ -6,7 +10,7 @@ def indexReverse(B, v):
     reversed_indices = [0] * n
 
     for i in range(n):
-        reversed_indices[i] = int(format(i, '0' + str(v) + 'b')[::-1], 2)
+        reversed_indices[i] = bit_reverse(i, v) # int(format(i, '0' + str(v) + 'b')[::-1], 2)
 
     result = [0] * n
     for i in range(n):
@@ -27,6 +31,7 @@ def egcd(a, b):
     else:
         g, y, x = egcd(b % a, a)
         return (g, x - (b // a) * y, y)
+    
 
 def modinv(a, m):
     g, x, y = egcd(a, m)
@@ -76,3 +81,36 @@ def isrootofunity(w,m,q):
 # Y_table = generate_Y_table(n, q)
 # print(Y_table)
         
+
+def read_2d_data(file_path):
+    """
+    This function return integer of 2 dimension data
+    """
+    try:
+        with open(file_path, 'r') as file:
+            # Read each line and split the integers
+            lines = file.readlines()
+            integer_array_2d = [list(map(int, line.split())) for line in lines]
+            return integer_array_2d
+    except FileNotFoundError:
+        print(f"File not found: {file_path}")
+        return None
+    except Exception as e:
+        print(f"Error reading file: {e}")
+        return None
+        
+def read_1d_data(file_path):
+    """
+    This function return integer of 1 dimension data
+    """
+    try:
+        with open(file_path, 'r') as file:
+            # All value are stored as space-separated values in the file
+            integer_array = [int(num) for num in file.read().split()]
+            return integer_array
+    except FileNotFoundError:
+        print(f"File not found: {file_path}")
+        return None
+    except Exception as e:
+        print(f"Error reading file: {e}")
+        return None
